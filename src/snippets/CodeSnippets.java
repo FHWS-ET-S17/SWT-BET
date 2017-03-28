@@ -14,7 +14,7 @@ public class CodeSnippets {
 	}
 	
 	public void  printSomething(){
-		System.out.println("Hello BET-6");
+		System.out.println("Hello World, Hello BET-6, Hello Students");
 	}
 
 }
