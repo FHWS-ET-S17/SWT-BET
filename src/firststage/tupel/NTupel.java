@@ -13,7 +13,7 @@ public class NTupel {
 	public NTupel(Double[] tupValues ){
 		tupDim =tupValues.length;
 		this.tupValues = new Double[tupDim];
-		//this.tupValues = tupValues; //Vorsicht, das kann shciefgehen
+		//this.tupValues = tupValues; //Vorsicht, das kann schiefgehen
 		//this.tupValues = tupValues.clone();
 		
 		for (int i=0; i<tupDim; i++){
@@ -84,12 +84,20 @@ public class NTupel {
 		return result;
 	}
 	
-	protected double geometricMeanValue(){
+	protected double squareSumRoot(){
 		double squareSum=0;
 		for (int i=0; i<getTupDim();i++){
 			squareSum = squareSum + Math.pow(getValueAt(i), 2);
 		}
 		return Math.pow(squareSum, 1./getTupDim());
+	}
+	
+	protected double geometricMeanValue(){
+		double product=1;
+		for (int i=0; i<getTupDim();i++){
+			product = product *getValueAt(i);
+		}
+		return Math.pow(product, 1./getTupDim());
 	}
 	
 	protected double arithmetikMeanValue(){
