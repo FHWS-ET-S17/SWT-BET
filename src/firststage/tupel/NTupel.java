@@ -84,9 +84,9 @@ public class NTupel {
 		return result;
 	}
 	
-	
+
 	protected double squareSumRoot(){
-		
+
 		double squareSum=0;
 		for (int i=0; i<getTupDim();i++){
 			squareSum = squareSum + Math.pow(getValueAt(i), 2);
@@ -97,7 +97,7 @@ public class NTupel {
 	protected double geometricMeanValue(){
 		double product=1;
 		for (int i=0; i<getTupDim();i++){
-			product = product *getValueAt(i) ;
+			product = product *getValueAt(i);
 		}
 		return Math.pow(product, 1./getTupDim());
 	}
