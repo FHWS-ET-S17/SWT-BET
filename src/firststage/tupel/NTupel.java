@@ -45,7 +45,7 @@ public class NTupel {
 
 	public void setTupDim(int tupDim) {
 		this.tupDim = tupDim;
-	}
+		this.tupValues= new Double[tupDim];	}
 
 	public void multiplyBy(double factor){
 		for (int i=0; i<tupDim; i++){
@@ -102,7 +102,7 @@ public class NTupel {
 		return Math.pow(product, 1./getTupDim());
 	}
 	
-	protected double arithmetikMeanValue(){
+	protected double arithmeticMeanValue(){
 		double sum=0;
 		for (int i=0; i<getTupDim();i++){
 			sum = sum + getValueAt(i);
@@ -111,27 +111,8 @@ public class NTupel {
 		return (sum/getTupDim());
 	}
 	
-	
-	
-	
-
 
 	public static void main(String[] args) {
-		NTupel t1 = new NTupel(3);
-		NTupel t2 = 
-				new NTupel(new Double[]{2.5, 3.5, 4.5});
-		Double[] values = new Double[]{2.5, 3.5, 4.5};
-		NTupel t3 = new NTupel(values);
-		// Test von tupDim
-		System.out.println("Dimension von t1: soll 3 sein:"+
-					t1.getTupDim());
-		System.out.println("Dimension von t2: soll 3 sein:"+
-				t2.getTupDim());
-		// Test von TUP-Values
-		for (int i=0; i<t3.getTupDim();i++){
-			System.out.println("tupValue erwartet: " + values[i] +
-					" ehalten: " + t3.getValueAt(i));
-		}
 		
 		
 	}
