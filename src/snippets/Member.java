@@ -1,16 +1,7 @@
 package snippets;
 
 public class Member {
-<<<<<<< HEAD
-	private int age;
-	private String name;
-	
-	public Member (String name, int age){
-		this.age=age;
-		this.name=name;
-		
-	}
-=======
+
 	
 	private String name;
 	private int age;
@@ -33,7 +24,4 @@ public class Member {
 	public String toString(){
 		return "Name: " + this.getName() + " Alter: " + this.getAge();
 	}
-	
-
->>>>>>> refs/remotes/origin/master
 }
