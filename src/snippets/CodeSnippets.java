@@ -13,7 +13,7 @@ public class CodeSnippets {
 
 	}
 	
-	public void  printSomething(){
+	public void printSomething(){
 		System.out.println("Hello World, Hello BET-6, Hello Students");
 	}
 

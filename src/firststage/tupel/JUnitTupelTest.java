@@ -95,6 +95,13 @@ public class JUnitTupelTest {
 		assertEquals(3, t1.arithmeticMeanValue(),1.0E-10);		
 				
 	}
+	@Test
+	// toString
+	public void testToSting(){
+		System.out.println(t2.toString());
+		assertTrue(true);
+	}
+		
 		
 		
 	

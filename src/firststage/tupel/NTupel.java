@@ -1,5 +1,7 @@
 package firststage.tupel;
 
+import java.util.Arrays;
+
 public class NTupel {
 	
 	private int tupDim;
@@ -8,6 +10,15 @@ public class NTupel {
 	public NTupel(int tupDim){
 		this.tupDim = tupDim;
 		tupValues= new Double[tupDim];
+	}
+	@Override
+	public String toString(){
+		String output = 
+				getClass().getName() + ": " ;
+		for (int i=0; i<getTupDim(); i++){
+			output = output.concat(getValueAt(i) + ";");
+		}
+		return output;
 	}
 	
 	public NTupel(Double[] tupValues ){
@@ -111,10 +122,33 @@ public class NTupel {
 		return (sum/getTupDim());
 	}
 	
-
+//
 	public static void main(String[] args) {
 		
 		
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + tupDim;
+		result = prime * result + Arrays.hashCode(tupValues);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NTupel other = (NTupel) obj;
+		if (tupDim != other.tupDim)
+			return false;
+		if (!Arrays.equals(tupValues, other.tupValues))
+			return false;
+		return true;
 	}
 	
 	
