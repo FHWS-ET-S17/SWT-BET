@@ -31,7 +31,6 @@ public class JUnitComplexTest {
 	@Test
 	public void test1() {
 		assertEquals(3.5,c1.getReal(),0.0001);
-		//fail("Not yet implemented");
 	}
 	
 	@Test

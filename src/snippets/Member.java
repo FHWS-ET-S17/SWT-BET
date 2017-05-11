@@ -1,6 +1,7 @@
 package snippets;
 
-public class Member {
+public class Member 
+          implements Comparable<Member> {
 
 	
 	private String name;
@@ -23,5 +24,10 @@ public class Member {
 	
 	public String toString(){
 		return "Name: " + this.getName() + " Alter: " + this.getAge();
+	}
+	
+	public int compareTo(Member m){
+		// Vergleich von m mit this
+		return this.getName().compareTo(m.getName());
 	}
 }
