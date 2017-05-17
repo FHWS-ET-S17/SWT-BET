@@ -18,7 +18,7 @@ public class TestMemberAdminImpls {
 	@Before
 	public void setUp() throws Exception {
 		// Testumgebung aufbauen, Parallel für alle 
-		// Implemntierungen von Member-Administrator
+		// Implementierungen von Member-Administrator
 		mAdminUsingList = new CAdminUsingList();
 		mAdminUsingMap = new CAdminUsingMap();
 		mAdminUsingSet = new CAdminUsingSet();
@@ -61,7 +61,6 @@ public class TestMemberAdminImpls {
 
 	@Test
 	public void testUsingMap() {
-
 		mAdmin = mAdminUsingMap;
 		testInterfaceMethods();
 	}

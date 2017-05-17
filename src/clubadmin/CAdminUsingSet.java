@@ -39,7 +39,7 @@ public class CAdminUsingSet implements MemberAdministrator {
 
 	@Override
 	public boolean addMember(Member member) {
-		// keine Dubletten elaubt!!
+		// keine Dubletten erlaubt!!
 		if (mSet.contains(member))
 			return false;
 		mSet.add(member);
