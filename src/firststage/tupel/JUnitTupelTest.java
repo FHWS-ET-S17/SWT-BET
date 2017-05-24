@@ -64,8 +64,23 @@ public class JUnitTupelTest {
 		//multiplyBy, divideBy
 		t4.multiplyBy(3.0);
 		assertArrayEquals(new Double[]{3.0,6.0,9.0,12.0},t4.getTupValues());
-		t4.divideBy(3.0);
+		t4.multiplyBy(0.0);
+		assertArrayEquals(new Double[]{0.0,0.0,0.0,0.0},t4.getTupValues());
+		try{
+			t4.divideBy(3.0);
+		}catch(Exception ex){
+			fail("Exeption bei Division durch 3");
+		}
 		assertArrayEquals(values4, t4.getTupValues());
+		try{
+			t4.divideBy(0.0);
+			fail("keine Exeption bei Division durch 0");
+		}catch (NullPointerException ex){
+			
+		}catch (Exception ex){
+			assertEquals(ex.getMessage(),"Division durch 0");
+		}
+	
 		
 		// add, sub
 		t2 = new NTupel(values4);

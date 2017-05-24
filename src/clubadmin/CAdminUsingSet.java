@@ -11,17 +11,18 @@ import java.util.TreeSet;
 
 public class CAdminUsingSet implements MemberAdministrator {
 
-	private SortedSet<Member> mSet;
+	private SortedSet<Member> mSetNaturalOrder, mSetIndividualOrder;
 
 	public CAdminUsingSet() {
-		this.mSet = new TreeSet<>();
+		this.mSetNaturalOrder = new TreeSet<>();
+		this.mSetIndividualOrder = new TreeSet<>(new AgeComparator());
 	}
 
 	@Override
 	public Member getMember(String name) {
 
 		Member searchObject = new Member(name, 0);
-		SortedSet<Member> tailSet = mSet.tailSet(searchObject);
+		SortedSet<Member> tailSet = mSetNaturalOrder.tailSet(searchObject);
 		if (tailSet != null) {
 			if (tailSet.first().getName().equals(name)) {
 				return tailSet.first();
@@ -40,9 +41,9 @@ public class CAdminUsingSet implements MemberAdministrator {
 	@Override
 	public boolean addMember(Member member) {
 		// keine Dubletten erlaubt!!
-		if (mSet.contains(member))
+		if (mSetNaturalOrder.contains(member))
 			return false;
-		mSet.add(member);
+		mSetNaturalOrder.add(member);
 		return true;
 	}
 
@@ -50,7 +51,7 @@ public class CAdminUsingSet implements MemberAdministrator {
 	public Member removeMember(String name) {
 		Member m = getMember(name);
 		if (m != null) {
-			mSet.remove(m);
+			mSetNaturalOrder.remove(m);
 			return m;
 		}
 		return null;
@@ -59,7 +60,7 @@ public class CAdminUsingSet implements MemberAdministrator {
 	@Override
 	public List<String> printMembers() {
 		List<String> memberStrings = new ArrayList<String>();
-		Iterator<Member> mIt = mSet.iterator();
+		Iterator<Member> mIt = mSetNaturalOrder.iterator();
 		while (mIt.hasNext()) {
 			Member m = mIt.next();
 			memberStrings.add(m.toString());
@@ -70,7 +71,7 @@ public class CAdminUsingSet implements MemberAdministrator {
 
 	@Override
 	public int getMemberCount() {
-		return mSet.size();
+		return mSetNaturalOrder.size();
 	}
 
 }

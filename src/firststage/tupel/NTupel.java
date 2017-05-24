@@ -3,130 +3,134 @@ package firststage.tupel;
 import java.util.Arrays;
 
 public class NTupel {
-	
+
 	private int tupDim;
 	private Double tupValues[];
-	
-	public NTupel(int tupDim){
+
+	public NTupel(int tupDim) {
 		this.tupDim = tupDim;
-		tupValues= new Double[tupDim];
+		tupValues = new Double[tupDim];
 	}
+
 	@Override
-	public String toString(){
-		String output = 
-				getClass().getName() + ": " ;
-		for (int i=0; i<getTupDim(); i++){
+	public String toString() {
+		String output = getClass().getName() + ": ";
+		for (int i = 0; i < getTupDim(); i++) {
 			output = output.concat(getValueAt(i) + ";");
 		}
 		return output;
 	}
-	
-	public NTupel(Double[] tupValues ){
-		tupDim =tupValues.length;
+
+	public NTupel(Double[] tupValues) {
+		tupDim = tupValues.length;
 		this.tupValues = new Double[tupDim];
-		//this.tupValues = tupValues; //Vorsicht, das kann schiefgehen
-		//this.tupValues = tupValues.clone();
-		
-		for (int i=0; i<tupDim; i++){
-			this.tupValues[i]= tupValues[i];
+		// this.tupValues = tupValues; //Vorsicht, das kann schiefgehen
+		// this.tupValues = tupValues.clone();
+
+		for (int i = 0; i < tupDim; i++) {
+			this.tupValues[i] = tupValues[i];
 		}
 	}
 
-	public int getTupDim(){
+	public int getTupDim() {
 		return tupDim;
 	}
-	
+
 	public Double[] getTupValues() {
 		return tupValues;
 	}
 
 	public void setTupValues(Double[] tupValues) {
-		this.tupDim=tupValues.length;
+		this.tupDim = tupValues.length;
 		this.tupValues = tupValues.clone();
 	}
-	
-	public double getValueAt(int index){
-		// TODO unzulässighen  Index überprüfen
+
+	public double getValueAt(int index) {
+		// TODO unzulässighen Index überprüfen
 		return tupValues[index].doubleValue();
 	}
-	public void setValueAt(double value, int index){
+
+	public void setValueAt(double value, int index) {
 		// TODO auf unzulässighen Index überprüfen
-		tupValues[index]= value;
+		tupValues[index] = value;
 	}
 
 	public void setTupDim(int tupDim) {
 		this.tupDim = tupDim;
-		this.tupValues= new Double[tupDim];	}
+		this.tupValues = new Double[tupDim];
+	}
 
-	public void multiplyBy(double factor){
-		for (int i=0; i<tupDim; i++){
-			tupValues[i] = tupValues[i]*factor;
+	public void multiplyBy(double factor) {
+		//if (factor == 0.0) throw new NullPointerException ("Fake-Ex");
+		for (int i = 0; i < tupDim; i++) {
+			tupValues[i] = tupValues[i] * factor;
 		}
 	}
-	
-	public void divideBy(double factor){
-		if (factor == 0) return;
-		for (int i=0; i<tupDim; i++){
-			tupValues[i] = tupValues[i]/factor;
+
+	public void divideBy(double factor) throws Exception {
+		if (factor == 0)
+			throw new Exception("Division durch 0");
+		int v1 = 1;
+		for (int i = 0; i < tupDim; i++) {
+			tupValues[i] = tupValues[i] / factor;
+			// fake, um Exception zu erzwingen
+			v1 = v1 / (int) factor;
 		}
 	}
-	
-	public static NTupel add(NTupel fTupel, NTupel sTupel){
-		//TODO Feldlängen müssen gleich sein
-		NTupel result = new NTupel(fTupel.getTupDim()) ;
+
+	public static NTupel add(NTupel fTupel, NTupel sTupel) {
+		// TODO Feldlängen müssen gleich sein
+		NTupel result = new NTupel(fTupel.getTupDim());
 		double sum;
-		for (int i=0; i<fTupel.getTupDim(); i++){
-			sum = fTupel.getValueAt(i)+
-					sTupel.getValueAt(i);
+		for (int i = 0; i < fTupel.getTupDim(); i++) {
+			sum = fTupel.getValueAt(i) + sTupel.getValueAt(i);
 			result.setValueAt(sum, i);
 		}
 		return result;
 	}
 
-	public static NTupel sub(NTupel fTupel, NTupel sTupel){
-		//TODO Feldlängen müssen gleich sein
-		NTupel result = new NTupel(fTupel.getTupDim()) ;
-		double dif=0;
-		for (int i=0; i<fTupel.getTupDim(); i++){
-			dif = fTupel.getValueAt(i)-
-					sTupel.getValueAt(i);
+	public static NTupel sub(NTupel fTupel, NTupel sTupel) {
+		// TODO Feldlängen müssen gleich sein
+		NTupel result = new NTupel(fTupel.getTupDim());
+		double dif = 0;
+		for (int i = 0; i < fTupel.getTupDim(); i++) {
+			dif = fTupel.getValueAt(i) - sTupel.getValueAt(i);
 			result.setValueAt(dif, i);
 		}
 		return result;
 	}
-	
 
-	protected double squareSumRoot(){
+	protected double squareSumRoot() {
 
-		double squareSum=0;
-		for (int i=0; i<getTupDim();i++){
+		double squareSum = 0;
+		for (int i = 0; i < getTupDim(); i++) {
 			squareSum = squareSum + Math.pow(getValueAt(i), 2);
 		}
-		return Math.pow(squareSum, 1./getTupDim());
+		return Math.pow(squareSum, 1. / getTupDim());
 	}
-	
-	protected double geometricMeanValue(){
-		double product=1;
-		for (int i=0; i<getTupDim();i++){
-			product = product *getValueAt(i);
+
+	protected double geometricMeanValue() {
+		double product = 1;
+		for (int i = 0; i < getTupDim(); i++) {
+			product = product * getValueAt(i);
 		}
-		return Math.pow(product, 1./getTupDim());
+		return Math.pow(product, 1. / getTupDim());
 	}
-	
-	protected double arithmeticMeanValue(){
-		double sum=0;
-		for (int i=0; i<getTupDim();i++){
+
+	protected double arithmeticMeanValue() {
+		double sum = 0;
+		for (int i = 0; i < getTupDim(); i++) {
 			sum = sum + getValueAt(i);
 		}
-		//TODO tupDim==0?? Exception im Konstruktor
-		return (sum/getTupDim());
+		// TODO tupDim==0?? Exception im Konstruktor
+		return (sum / getTupDim());
 	}
-	
-//
+
+	//
 	public static void main(String[] args) {
-		
-		
+
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,6 +139,7 @@ public class NTupel {
 		result = prime * result + Arrays.hashCode(tupValues);
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -150,8 +155,5 @@ public class NTupel {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

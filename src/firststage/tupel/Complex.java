@@ -62,6 +62,18 @@ public class Complex extends NTupel {
 		result.setImag(newAbs*Math.sin(newPhase));
 		return result;
 	}
+	public static Complex divide(Complex c1, Complex c2)throws Exception{ 
+		double abs1 = c1.absoluteValue(), abs2 = c2.absoluteValue();
+		if (abs2 <1.E-20) 
+			throw new Exception("Divisor zu klein: " + abs2);
+		double newAbs = abs1/abs2;
+		
+		double newPhase = c1.phase()-c2.phase();
+		Complex result = new Complex();
+		result.setReal(newAbs*Math.cos(newPhase));
+		result.setImag(newAbs*Math.sin(newPhase));
+		return result;
+	}
 	
 	@Override
 	public String toString(){
