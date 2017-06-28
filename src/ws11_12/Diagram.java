@@ -6,5 +6,9 @@ public class Diagram extends DisplayElement{
 		super(name);
 	}
 	
+	public String getType(){
+		return "Diagram";
+	}
+	
 
 }

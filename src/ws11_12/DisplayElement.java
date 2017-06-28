@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class DisplayElement {
-	private String name;
+	protected String name,type;
 	private List <String> associatedElementNames = new ArrayList<>();
 	private Set <DisplayElement> associatedElements = new HashSet<>();
 
@@ -27,6 +27,8 @@ public abstract class DisplayElement {
 	}
 	
 	public void link (DisplayElement element){
+		if (element==null) throw new NullPointerException("Element nicht vorhanden");
+		//element.getName();
 		this.associatedElements.add(element);
 	}
 	
@@ -36,6 +38,10 @@ public abstract class DisplayElement {
 		}
 		return false;
 	}
+	
+	
+	
+	public abstract String getType();
 	
 
 }

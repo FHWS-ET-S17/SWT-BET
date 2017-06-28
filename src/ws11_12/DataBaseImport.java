@@ -8,14 +8,14 @@ public class DataBaseImport {
 
 	// Diese Konstruktion ist nur zur einfachen Erzeugung der
 	// DisplayElementObjekte
-	// Das würde in der Realität natürlich anders aussehen
+	// Das wï¿½rde in der Realitï¿½t natï¿½rlich anders aussehen
 	
 	private static enum Type {PLC,Diagram};
 
 	private static String[][] plcArray = { 
 			{ "PLC1", "Dia1", "Dia3", "Dia7" }, 
 			{ "PLC2", "Dia1", "Dia4", null },
-			{ "PLC3", "Dia1", "Dia3", "Dia6" }};
+			{ "PLC3", "Dia1", "Dia3", "Dia7" }};
 												
 	
 	private static String[][] diagramArray = {  
